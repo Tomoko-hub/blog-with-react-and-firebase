@@ -11,8 +11,8 @@ const CreatePost = () => {
           <input type="text" placeholder='Write title' />
         </div>
         <div className="inputPost">
-          <div>Post</div>
-          <textarea placeholder='Write post' />
+          <div>Blog</div>
+          <textarea placeholder='Write your blog' />
         </div>
         <button className='postButton'>Post your blog</button>
       </div>
