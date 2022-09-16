@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Home.css";
 
 const Home = () => {
   return (
@@ -9,10 +10,10 @@ const Home = () => {
         </div>
         <div className="postTextContainer">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam esse necessitatibus non illo nam impedit. Natus totam, consectetur aperiam ut alias molestiae dolore facilis, ducimus asperiores illum itaque cum in assumenda praesentium tenetur, magni autem maiores unde illo voluptatum nihil saepe veniam. Modi magni eaque, totam ipsa facilis iste expedita!
-          <div className="nameAndDeleteButton">
+        </div>
+        <div className="nameAndDeleteButton">
           <h3>@Tomomann</h3>
           <button>Delete</button>
-          </div>
         </div>
       </div>
     </div>
