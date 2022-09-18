@@ -1,21 +1,38 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../firebase";
 import "./Home.css";
 
 const Home = () => {
+  const [ postList, setPostList ] = useState([]);
+
+  useEffect(() => {
+    const getPosts = async  () =>{
+      const data = await getDocs(collection(db, "posts"));
+      setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+   };
+    getPosts();
+  },[]);
+
   return (
     <div className='homepage'>
-      <div className="postContents">
-        <div className="postHeader">
-          <h1>Tittle</h1>
-        </div>
-        <div className="postTextContainer">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam esse necessitatibus non illo nam impedit. Natus totam, consectetur aperiam ut alias molestiae dolore facilis, ducimus asperiores illum itaque cum in assumenda praesentium tenetur, magni autem maiores unde illo voluptatum nihil saepe veniam. Modi magni eaque, totam ipsa facilis iste expedita!
-        </div>
-        <div className="nameAndDeleteButton">
-          <h3>@Tomomann</h3>
-          <button>Delete</button>
-        </div>
-      </div>
+      {postList.map((post) => {
+        return (
+          <div className="postContents" key={post.id}>
+            <div className="postHeader">
+              <h1>{post.title}</h1>
+            </div>
+            <div className="postTextContainer">
+              {post.postsText}
+            </div>
+            <div className="nameAndDeleteButton">
+              <h3>@{post.author.username}</h3>
+              <button>Delete</button>
+            </div>
+          </div>    
+        )
+      })}
     </div>
   )
 }
