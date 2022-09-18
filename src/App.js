@@ -9,7 +9,8 @@ import Logout from './components/Logout';
 import NavBar from './components/NavBar';
 
 function App() {
-  const [ isAuth, setIsAuth ] = useState(false);
+  const [ isAuth, setIsAuth ] = useState(localStorage.getItem("isAuth"));
+
   return (
     <Router>
       <NavBar isAuth={isAuth} />
